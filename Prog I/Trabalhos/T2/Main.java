@@ -16,7 +16,7 @@ class Main{
     bodega.addBebidas(new Bebida("Vodka",45.5,600,45.00,60));
     System.out.println(numFunc);
     do{
-      System.out.println("\n1 : Cadastrar Funcionario \n2 : Cadastrar Clientes \n3 Cadastrar Bebidas\n4 : Venda \n5 : Compra de estoque\n6 : Mostrar funcionarios \n7 : Mostrar clientes\n8 : Mostrar Bebidas \n0 : Sair");
+      System.out.println("\n1 : Cadastrar Funcionario \n2 : Cadastrar Clientes \n3 : Cadastrar Bebidas\n4 : Venda \n5 : Compra de estoque\n6 : Mostrar funcionarios \n7 : Mostrar clientes\n8 : Mostrar Bebidas \n0 : Sair");
       menu = scan.nextInt();
       switch(menu){
         case 1 :

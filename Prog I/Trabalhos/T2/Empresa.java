@@ -31,49 +31,48 @@ class Empresa{
 
 
   void estoqueBebidas(ArrayList<Bebida> produtos){
-    System.out.println("\nDigite o nome da bebida : ");
-    String aux = new String(scan.next());
+    System.out.println("\nDigite o codigo da bebida : ");
+    int aux = scan.nextInt();
     Bebida aux2 = new Bebida();
     Iterator<Bebida> i = produtos.iterator();
-    while(i.hasNext()){
-      Bebida io = i.next();
-      if(aux == io.nome){
-        aux2 = io;
-        break;
-      }else{
-        System.out.println("Nome da bebida inválido !");
+    for(int h = 0;h < produtos.size(); h++){
+      if(aux == h){
+        aux2 = produtos.get(h);
+        System.out.println("Digite a quantidade de bebidas a adicionar no estoque : ");
+        int x = scan.nextInt();
+        aux2.estoque += x;
+        System.out.println("Novo estoque de "+aux2.estoque);
         return;
       }
+
     }
-    System.out.println("Digite a quantidade de bebidas a adicionar no estoque : ");
-    int x = scan.nextInt();
-    aux2.estoque += x;
-    System.out.println("Novo estoque de "+aux2.estoque);
+    System.out.println("Codigo inválido !");
+    return;
   }
+
   void vendaBebidas(ArrayList<Bebida> produtos){
-    System.out.println("\nDigite o nome da bebida : ");
-    String aux4 = new String(scan.nextLine());
+    System.out.println("\nDigite o codigo da bebida : ");
+    int aux4 = scan.nextInt();
     Bebida aux5 = new Bebida();
     Iterator<Bebida> f = produtos.iterator();
     Bebida fo = new Bebida();
-    while(f.hasNext()){
-      fo = f.next();
-      if(aux4 == fo.nome){
-          break;
-      }else{
-        System.out.println("Bebida não encontrada ! ");
-        return ;
+    for(int l = 0 ; l < produtos.size(); l++){
+      if(aux4 == l){
+        aux5 = produtos.get(l);
+        System.out.println("Digite a quantidade a vender : ");
+        int vender = scan.nextInt();
+        if(aux5.confereEstoque(vender)){
+          aux5.estoque -= vender;
+          System.out.println("Venda efetuada com sucesso ! ");
+          return;
+        }
+        else{
+          System.out.println("Estoque menor que a quantidade solicitada !");
+          return;
+        }
       }
     }
-    System.out.println("Digite a quantidade a vender : ");
-    int vender = scan.nextInt();
-    if(fo.confereEstoque(vender)){
-      fo.estoque -= vender;
-      System.out.println("Venda efetuada com sucesso ! ");
-    }
-    else{
-      System.out.println("Estoque menor que a quantidade solicitada !");
-    }
+    System.out.println("Código não encontrado");
   }
 
   void mostra(){
@@ -101,6 +100,7 @@ class Empresa{
   }
   void mostraBebidas(){
     Iterator<Bebida> k = produtos.iterator();
+    int p = 0;
     while(k.hasNext()){
       Bebida ko = k.next();
       System.out.println("\nNome : "+ko.nome);
@@ -108,6 +108,8 @@ class Empresa{
       System.out.println("Quantidade em ml : "+ko.quantidade);
       System.out.println("Preço : "+ko.preco);
       System.out.println("Estoque : "+ko.estoque);
+      System.out.println("Codigo : "+p);
+      p++;
     }
   }
 
